@@ -17,7 +17,7 @@ if not os.path.exists(IMAGES_DIR):
 
 # -- problem definition
 PB = Problem(dataset=ReverseDuffingDataset,
-             noise_std=0,
+             noise_std=0.6,
              data_traj_number=4 * int(1e3),
              data_traj_len=1000,
              name="ReverseDuffing")
@@ -78,11 +78,11 @@ def load_model(path):
 
 # %% --- transient observer: training \Tau (extension of T^{-1}) ---
 decoder = get_model_init()
-# train_autoencoder(model=decoder,
-#                   train_loader=train_loader,
-#                   valid_loader=valid_loader,
-#                   algo=ALGO)
-#save_model(ALGO, PB, decoder)
+train_autoencoder(model=decoder,
+                   train_loader=train_loader,
+                  valid_loader=valid_loader,
+                   algo=ALGO)
+save_model(ALGO, PB, decoder)
 
 # -- verbose: eigen values of A
 render_eigenvalues(decoder.A)
@@ -96,11 +96,11 @@ autoencoder.use_encoder = True
 #PB.noise_std = 0.1
 if PB.noise_std == 0:
     autoencoder.A_frozen = True
-# train_autoencoder(model=autoencoder,
-#                   train_loader=train_loader,
-#                   valid_loader=valid_loader,
-#                   algo=ALGO)
-# save_model(ALGO, PB, autoencoder)
+train_autoencoder(model=autoencoder,
+                  train_loader=train_loader,
+                  valid_loader=valid_loader,
+                  algo=ALGO)
+save_model(ALGO, PB, autoencoder)
 
 # -- verbose: eigen values of A
 render_eigenvalues(autoencoder.A)
