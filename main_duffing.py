@@ -27,7 +27,7 @@ ALGO = Algo(A_diag=False,
             z_dim=2*PB.dataset.x_dim + 1,
             batch_size=50,
             net_arch=[50, 50, 50, 50],
-            epochs=1000,
+            epochs=200,
             lr_init=1e-3,
             criterion=torch.nn.HuberLoss(delta=1))
 
