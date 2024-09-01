@@ -18,7 +18,7 @@ if not os.path.exists(IMAGES_DIR):
 # -- problem definition
 PB = Problem(dataset=ReverseDuffingDataset,
              noise_std=0,
-             data_traj_number=4 * int(1e3),
+             data_traj_number=5 * int(1e3),
              data_traj_len=1000,
              name="ReverseDuffing")
 
