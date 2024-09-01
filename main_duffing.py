@@ -17,7 +17,7 @@ if not os.path.exists(IMAGES_DIR):
 
 # -- problem definition
 PB = Problem(dataset=ReverseDuffingDataset,
-             noise_std=0.6,
+             noise_std=0,
              data_traj_number=4 * int(1e3),
              data_traj_len=1000,
              name="ReverseDuffing")
@@ -27,7 +27,7 @@ ALGO = Algo(A_diag=False,
             z_dim=2*PB.dataset.x_dim + 1,
             batch_size=50,
             net_arch=[50, 50, 50, 50],
-            epochs=200,
+            epochs=1000,
             lr_init=1e-3,
             criterion=torch.nn.HuberLoss(delta=1))
 
